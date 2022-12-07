@@ -1,40 +1,46 @@
 import styled from 'styled-components'
 
+export const Div =  styled.div`
+  background-color: #00283c;
+  width: 100%;
+  height: 90px;
+`
 
-export const HeaderStyles = {
-  backgroundColor: '#00283c',
-  width: '100vw',
-  height: '60',
-  marginTop: '-544.5px',
-  display: 'flex',
-  flexDirection: 'row',
-  
+export const LinkStyle = {
+  backgroundColor: 'transparent',
 }
 
 export const SchoolButton = styled.button`
-  width: 100px;
-  height: 25px;
-  background-color: #97CAEF;
-  border-color: #3FEEE6;
-  border-radius: 10px;
-  color: black;
-  font-weight: bold;
-  margin-left: -20px;
+  display: inline-block;
+  height: 70px;
+  width: 70px;
+  float: left;
+  margin: 0 15px;
+  margin-top: 15px;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-out;
+  :hover  {
+    width: 200px;
+  }
+  :nth-child(1) span {
+    color: #4267b2;
+  }
 `
 
-// export const PupilButton = {
-//   display: 'flex',
-//   listStyle: 'none',
-//   width: '55%',
-//   height: '170px',
-//   background: 'transparent',
-//   color: 'white',
-//   fontWeight: 'bold',
-//   fontSize: '66px',
-//   marginLeft: '910px',
-//   marginTop: '-186px',
-//   position: 'center',
-//   justifyContent: 'center',
-//   alignItems: 'center',
-  
-// }
+export const Img = styled.img`
+font-size: 25px;
+line-height: 60px;
+transition: all 0.3s ease-out;
+`
+
+export const Span = styled.span`
+font-size: 20px;
+font-weight: 500;
+line-height: 60px;
+margin-left: 10px;
+transition: all 0.3s ease-out;
+`

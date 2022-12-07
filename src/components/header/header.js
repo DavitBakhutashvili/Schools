@@ -1,32 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { SchoolButton,HeaderStyles} from './header.styled';
+import { SchoolButton,HeaderStyles,Div,
+         LinkStyle,Img,Span} from './header.styled';
+import images from '../../assets/images/schoolIcon.png';
 
 
 
 export default function Header(){
     return(
-        <div style={HeaderStyles}>
+        <Div>
             
-            <nav>
-                <ul style={{listStyle: 'none'}}>
-                    <li>
-                        <Link to="/schoolPage">
-                        <SchoolButton >
-                            Schools
-                        </SchoolButton>
-                        </Link>
-                    </li>
-                </ul>
-            </nav>
+            <Link style={LinkStyle} to="/schoolPage">
+                <SchoolButton >
+                    <Img src={images} alt="schoolIcon" />
+                    {/* <Span>schools</Span> */}
+                </SchoolButton>
+            </Link>
 
-            <nav>
-                <ul style={{listStyle: 'none'}}>
-                    <li>
-                        <Link to="/schools/:id/"/>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+            <Link to="/schools/:id/"/>
+ 
+        </Div>
     )
 }
