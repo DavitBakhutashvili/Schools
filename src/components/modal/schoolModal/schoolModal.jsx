@@ -9,11 +9,13 @@ import {
   CloseIcon,
   hrStyle,
   CloseButton,
-  labelStyle,
-  spanStyle,
+  Label,
+  Span,
   FieldStyle,
-  FormStyle,
+  Form,
+  Container,
   ErrorStyle,
+  ButtonContainer,
   CnlButton,
   AddButton,
 } from './schoolModal.styles';
@@ -129,78 +131,90 @@ export default function SchoolModal() {
         <hr style={hrStyle} />
       </div>
       <FormikProvider value={formik}>
-        <form style={FormStyle} onSubmit={formik.handleSubmit}>
-          <label style={labelStyle}>
-            Name
-            <span style={spanStyle}> *</span>
-          </label>
-          <Field style={FieldStyle} name="name" id="name" />
-          <div style={ErrorStyle}>
-            <ErrorMessage name="name" id="name" />
-          </div>
+        <Form onSubmit={formik.handleSubmit}>
+          <Container>
+            <Label>
+              Name
+              <Span> *</Span>
+            </Label>
+            <Field style={FieldStyle} name="name" id="name" />
+            <div style={ErrorStyle}>
+              <ErrorMessage name="name" id="name" />
+            </div>
+          </Container>
 
-          <label style={labelStyle}>
-            Address
-            <span style={spanStyle}> *</span>
-          </label>
-          <Field style={FieldStyle} name="address" id="address" />
-          <div style={ErrorStyle}>
-            <ErrorMessage name="address" id="address" />
-          </div>
+          <Container>
+            <Label>
+              Address
+              <Span> *</Span>
+            </Label>
+            <Field style={FieldStyle} name="address" id="address" />
+            <div style={ErrorStyle}>
+              <ErrorMessage name="address" id="address" />
+            </div>
+          </Container>
 
-          <label style={labelStyle}>
-            Phone
-            <span style={spanStyle}>*</span>
-          </label>
-          <Field style={FieldStyle} name="phone" id="phone" />
-          <div style={ErrorStyle}>
-            <ErrorMessage name="phone" id="phone" />
-          </div>
+          <Container>
+            <Label>
+              Phone
+              <Span>*</Span>
+            </Label>
+            <Field style={FieldStyle} name="phone" id="phone" />
+            <div style={ErrorStyle}>
+              <ErrorMessage name="phone" id="phone" />
+            </div>
+          </Container>
 
-          <label style={labelStyle}>
-            Contact Person
-            <span style={spanStyle}> *</span>
-          </label>
-          <Field style={FieldStyle} name="contactPerson" id="contactPerson" />
-          <div style={ErrorStyle}>
-            <ErrorMessage name="contactPerson" id="contactPerson" />
-          </div>
+          <Container>
+            <Label>
+              Contact Person
+              <Span> *</Span>
+            </Label>
+            <Field style={FieldStyle} name="contactPerson" id="contactPerson" />
+            <div style={ErrorStyle}>
+              <ErrorMessage name="contactPerson" id="contactPerson" />
+            </div>
+          </Container>
 
-          <label style={labelStyle}>
-            Class Amount
-            <span style={spanStyle}>*</span>
-          </label>
-          <Field style={FieldStyle} name="classAmount" id="classAmount" />
-          <div style={ErrorStyle}>
-            <ErrorMessage name="classAmount" id="classAmount" />
-          </div>
+          <Container>
+            <Label>
+              Class Amount
+              <Span>*</Span>
+            </Label>
+            <Field style={FieldStyle} name="classAmount" id="classAmount" />
+            <div style={ErrorStyle}>
+              <ErrorMessage name="classAmount" id="classAmount" />
+            </div>
+          </Container>
 
-          <label style={labelStyle}>
-            Country
-            <span style={spanStyle}>*</span>
-          </label>
-          <Field
-            as="select"
-            name="country_id"
-            id="country_id"
-            style={FieldStyle}
-            onChange={(e) => handleCountryChange(e)}
-          >
-            {countryWithCity.map((country, index) => (
-              <option value={country.country_id} key={index}>
-                {country.country_name}
-              </option>
-            ))}
-          </Field>
-          <div style={ErrorStyle}>
-            <ErrorMessage name="country_id" id="country_id" />
-          </div>
+          <Container>
+            <Label>
+              Country
+              <Span>*</Span>
+            </Label>
+            <Field
+              as="select"
+              name="country_id"
+              id="country_id"
+              style={FieldStyle}
+              onChange={(e) => handleCountryChange(e)}
+            >
+              {countryWithCity.map((country, index) => (
+                <option value={country.country_id} key={index}>
+                  {country.country_name}
+                </option>
+              ))}
+            </Field>
+            <div style={ErrorStyle}>
+              <ErrorMessage name="country_id" id="country_id" />
+            </div>
+          </Container>
 
-          <label style={labelStyle}>
-            City
-            <span style={spanStyle}>*</span>
-          </label>
-          <div style={{ width: '550px', height: '38px' }}>
+          <Container>
+            <Label>
+              City
+              <Span>*</Span>
+            </Label>
             <Field
               as="select"
               name="city_id"
@@ -214,21 +228,16 @@ export default function SchoolModal() {
                 </option>
               ))}
             </Field>
-          </div>
-          <div style={ErrorStyle}>
-            <ErrorMessage name="city_id" id="city_id" />
-          </div>
-
-          <div>
-            <div style={{ marginLeft: '360px', borderRadius: '10px' }}>
-              <AddButton type="submit">Add</AddButton>
+            <div style={ErrorStyle}>
+              <ErrorMessage name="city_id" id="city_id" />
             </div>
+          </Container>
 
-            <div style={{ marginLeft: '450px', marginTop: '-40px' }}>
-              <CnlButton onClick={closeModal}>Cancel</CnlButton>
-            </div>
-          </div>
-        </form>
+          <ButtonContainer>
+            <AddButton type="submit">Add</AddButton>
+            <CnlButton onClick={closeModal}>Cancel</CnlButton>
+          </ButtonContainer>
+        </Form>
       </FormikProvider>
     </Modal>
   );

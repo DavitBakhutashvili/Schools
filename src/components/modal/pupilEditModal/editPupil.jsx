@@ -15,16 +15,18 @@ import {
   ErrorStyle,
   AddButton,
   CnlButton,
-} from './pupilModal.styles';
+} from '../pupilModal/pupilModal.styles';
 import Images from '../../../assets/images/closeButton.png';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useFormik, FormikProvider, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { PupilStateContext } from '../../../context/states/pupilStates/pupilStatesContext';
 import { SchoolStateContext } from '../../../context/states/schoolStates/schoolStatesContext';
+import ls from 'local-storage';
 
 Modal.setAppElement('#root');
 
-export default function PupilModal() {
+function EditPupil() {
+  const phoneRegExp = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{3})$/;
   const {
     pupils,
     setPupils,
@@ -35,12 +37,6 @@ export default function PupilModal() {
     setEditPupil,
   } = useContext(PupilStateContext);
   const { schoolValues } = useContext(SchoolStateContext);
-
-  const phoneRegExp = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{3})$/;
-
-  // useEffect(() => {
-  //   setEditPupil(editPupil);
-  // }, [editPupil]);
 
   const addPupils = (pupil) => {
     const newPupil = {
@@ -53,7 +49,7 @@ export default function PupilModal() {
       gender: pupil.gender,
       schoolId: pupil.schoolId,
     };
-    setPupils([...pupils.filter((item) => item.id !== pupil.id), newPupil]);
+    setPupils([...pupils, newPupil]);
   };
 
   const validationSchema = Yup.object({
@@ -79,58 +75,38 @@ export default function PupilModal() {
     gender: Yup.string().required('This is a required field!'),
   });
 
-  // const formik = useFormik({
-  //   initialValues: {
-  //     firstName: '',
-  //     lastName: '',
-  //     address: '',
-  //     phone: '',
-  //     birthday: '',
-  //     gender: '',
-  //     ...editPupil,
-  //   },
-  //   validationSchema,
-  //   onSubmit: (values) => {
-  //     console.log('🚀 ~ file: pupilModal.js:90 ~ PupilModal ~ values', values);
-  //     addPupils({ ...values, schoolId: currentSchoolId });
-  //     CloseModal();
-  //     formik.resetForm();
-  //   },
-  // });
+  const formik = useFormik({
+    initialValues: {
+      firstName: '',
+      lastName: '',
+      address: '',
+      phone: '',
+      birthday: '',
+      gender: '',
+      ...editPupil,
+    },
+    validationSchema,
+    onSubmit: (values) => {
+      console.log('🚀 ~ file: editPupil.jsx:96 ~ EditPupil ~ values', values);
+      addPupils({ ...values, schoolId: currentSchoolId, ...editPupil });
+      CloseModal();
+      formik.resetForm();
+    },
+  });
 
   return (
     <>
       <Modal isOpen={modalOpen} onRequestClose={CloseModal} style={ModalStyle}>
         <div>
-          <h1 style={h1Style}> Add a new pupil</h1>
+          <h1 style={h1Style}> Add an edit pupil</h1>
           <CloseButton onClick={CloseModal}>
             <img src={Images} alt="CloseIcon" style={CloseIcon} />
           </CloseButton>
           <hr style={hrStyle} />
         </div>
 
-        <Formik
-          initialValues={{
-            firstName: '',
-            lastName: '',
-            address: '',
-            phone: '',
-            birthday: '',
-            gender: '',
-            ...editPupil,
-          }}
-          onSubmit={(values) => {
-            console.log(
-              '🚀 ~ file: pupilModal.js:90 ~ PupilModal ~ values',
-              values
-            );
-            addPupils({ ...values, schoolId: currentSchoolId });
-            CloseModal();
-            // formik.resetForm();
-          }}
-          validationSchema={validationSchema}
-        >
-          <Form style={FormStyle}>
+        <FormikProvider value={formik}>
+          <form style={FormStyle} onSubmit={formik.handleSubmit}>
             <Container>
               <Label>
                 FirstName <span style={spanStyle}> *</span>
@@ -230,9 +206,11 @@ export default function PupilModal() {
               <AddButton type="submit">Add</AddButton>
               <CnlButton onClick={CloseModal}>Cancel</CnlButton>
             </ButtonContainer>
-          </Form>
-        </Formik>
+          </form>
+        </FormikProvider>
       </Modal>
     </>
   );
 }
+
+export default EditPupil;

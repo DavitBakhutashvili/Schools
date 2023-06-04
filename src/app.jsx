@@ -6,6 +6,7 @@ import Header from './components/header/header';
 
 import SchoolModal from './components/modal/schoolModal/schoolModal';
 import PupilModal from './components/modal/pupilModal/pupilModal';
+import EditPupil from './components/modal/pupilEditModal/editPupil';
 
 import SchoolPage from './components/pages/schoolPage/schoolPage';
 import SchoolView from './components/pages/pageForViewingSchoolAndPupil/schoolView';
@@ -25,6 +26,7 @@ export default function App() {
           </Routes>
           <SchoolModal />
           <PupilModal />
+          {/* <EditPupil /> */}
         </PupilStateContextProvider>
       </SchoolStateContextProvider>
     </Div>

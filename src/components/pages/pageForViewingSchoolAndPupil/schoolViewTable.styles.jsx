@@ -60,8 +60,8 @@ export const Div = styled.div`
     display: flex;
     width: 200px;
     height: 90px;
-    margin-top: 260px;
-    margin-left: -420px;
+    margin-top: 385px;
+    margin-left: -1910px;
   }
 `;
 
@@ -131,7 +131,7 @@ export const Button = styled.button`
   width: 160px;
   height: 50px;
   border: none;
-  border-radius: 10px;
+  // border-radius: 10px;
 `;
 
 export const Img = styled.img`
@@ -160,15 +160,15 @@ export const Table = styled.table`
   text-decoration: none;
   border-collapse: collapse;
   background: transparent;
-  margin-top: 400px;
-  margin-left: -1890px;
+  margin-top: 470px;
+  margin-left: -1900px;
 `;
 export const Thead = styled.thead`
   justify-content: center;
   align-items: center;
   font-style: normal;
   font-weight: normal;
-  // width: 100%;
+  width: 100%;
 `;
 export const TR = styled.tr`
   font-size: 14px;
@@ -176,7 +176,7 @@ export const TR = styled.tr`
   font-family: Roboto;
   justify-content: center;
   align-items: center;
-  // width: 100%;
+  width: 100%;
 `;
 
 export const Th = styled.th`
@@ -194,13 +194,11 @@ export const Th = styled.th`
 `;
 
 export const Tbody = styled.tbody`
-  // justify-content: center;
-  // align-items: center;
   font-style: normal;
   font-weight: normal;
-  width: 1985px;
+  width: 100%;
   margin-top: 55px;
-  margin-left: -1850px;
+  margin-left: -1895px;
 `;
 
 export const Tr = styled.tr`
@@ -209,6 +207,10 @@ export const Tr = styled.tr`
   font-family: Roboto;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  :nth-child(even) {
+    background-color: #dee2e6;
+  }
 `;
 
 export const TH = styled.th`
@@ -221,6 +223,37 @@ export const TH = styled.th`
   color: #505050;
   text-decoration: none;
   margin-top: 10px;
-  width: 229px;
+  width: 329px;
   height: 50px;
+`;
+
+export const DelButton = styled.button`
+  width: 50px;
+  border: 1px solid black;
+  cursor: pointer;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  color: black;
+  // :hover {
+  //   background-color: red;
+  //   color: white;
+  // }
+`;
+
+export const EditButton = styled.button`
+  width: 50px;
+  margin-left: 2px;
+  border: 1px solid black;
+  cursor: pointer;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  color: black;
+  // :hover {
+  //   background-color: #ced4d9;
+  //   color: #000000;
+  // }
 `;

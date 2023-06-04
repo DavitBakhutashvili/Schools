@@ -1,4 +1,4 @@
-import { React, useContext, useEffect } from 'react';
+import { React, useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import {
   Table,
@@ -16,21 +16,25 @@ import {
   Button,
   Img,
   Span,
+  DelButton,
+  EditButton,
 } from './schoolViewTable.styles';
 import image from '../../../assets/images/addSchool.png';
 import { SchoolStateContext } from '../../../context/states/schoolStates/schoolStatesContext';
 import { PupilStateContext } from '../../../context/states/pupilStates/pupilStatesContext';
 
 function SchoolView() {
+  const { schoolValues } = useContext(SchoolStateContext);
   const {
-    // eslint-disable-next-line no-unused-vars
-    handleChange,
-    openModal,
-    searchValues,
-    schoolValues,
-  } = useContext(SchoolStateContext);
-  const { OpenModal, pupils, setCurrentSchoolId } =
-    useContext(PupilStateContext);
+    OpenModal,
+    pupils,
+    setCurrentSchoolId,
+    deletePupil,
+    pupilEdit,
+    editPupil,
+    setEditPupil,
+    addPupilHandler,
+  } = useContext(PupilStateContext);
 
   const { id } = useParams();
   const schoolId = { id }.id;
@@ -47,6 +51,11 @@ function SchoolView() {
   );
 
   const filteredPupil = pupils.filter((pupil) => pupil.schoolId === schoolID);
+  console.log(
+    '🚀 ~ file: schoolView.jsx:60 ~ SchoolView ~ filteredPupil',
+    filteredPupil
+  );
+
   return (
     <Div>
       <div style={{ background: 'transparent' }}>
@@ -111,6 +120,7 @@ function SchoolView() {
             <Th>Gender</Th>
             <Th>ID</Th>
             <Th>School_ID</Th>
+            <Th></Th>
           </TR>
         </Thead>
         <Tbody>
@@ -124,12 +134,16 @@ function SchoolView() {
               <TH>{pupil.gender}</TH>
               <TH>{pupil.id}</TH>
               <TH>{pupil.schoolId}</TH>
+              <TH>
+                <DelButton onClick={() => deletePupil(pupil)}>delete</DelButton>
+                <EditButton onClick={() => pupilEdit(pupil)}>edit</EditButton>
+              </TH>
             </Tr>
           ))}
         </Tbody>
       </Table>
       <div className="btn">
-        <Button onClick={OpenModal}>
+        <Button onClick={addPupilHandler}>
           <Img src={image} alt="addSchool" />
           <Span>Add Pupil</Span>
         </Button>

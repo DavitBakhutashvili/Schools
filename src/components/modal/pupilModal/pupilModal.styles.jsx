@@ -8,7 +8,7 @@ export const ModalStyle = {
     alignItems: 'flex-start',
     padding: '0px',
     width: '600px',
-    height: '700px',
+    height: '665px',
     background: 'white',
     border: '1px solid rgba(0, 0, 0, 0.2)',
     borderRadius: '10px',
@@ -46,9 +46,9 @@ export const h1Style = {
 //close-button style
 export const CloseButton = styled.button`
   display: flex;
-  flexdirection: column;
-  justifycontent: center;
-  alignitems: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 0px;
   position: absolute;
   width: 32px;
@@ -75,7 +75,7 @@ export const hrStyle = {
   height: '0px',
   left: 'calc(50% - 600px/2)',
   top: 'calc(50% - 0px/2)',
-  border: '1px solid #233142',
+  border: '1px solid #f0f0f0',
   flex: ' none',
   order: ' 0',
   alignSelf: 'stretch',
@@ -95,20 +95,27 @@ export const FormStyle = {
   flexGrow: 0,
   margin: '0px 10px',
 };
-export const labelStyle = {
-  width: '207px',
-  height: '24px',
-  fontFamily: 'Roboto',
-  fontStyle: 'normal',
-  fontWeight: '400',
-  fontSize: '16px',
-  lineHeight: '150%',
-  color: '#233142',
-  flex: 'none',
-  flexGrow: 0,
-  order: 0,
-  margin: '5px 0px',
-};
+
+export const Container = styled.div`
+  background: transparent;
+  height: 100px;
+  margin-top: 5px;
+`;
+
+export const Label = styled.label`
+  width: 207px;
+  height: 24px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #233142;
+  flex: none;
+  flex-grow: 0
+  order: 0
+  margin: 5px 0px;
+`;
 export const spanStyle = {
   color: '#f95959',
 };
@@ -119,7 +126,9 @@ export const ErrorStyle = {
   fontFamily: 'Roboto',
   fontSize: '14px',
   color: '#f95959',
-  margin: '5px 5px',
+  marginLeft: '-215px',
+  marginTop: '2px',
+  width: '100%',
 };
 export const FieldStyle = {
   background: ' #f0f0f0',
@@ -127,8 +136,8 @@ export const FieldStyle = {
   flexDirection: 'row',
   alignItems: 'center',
   padding: '7px 13px',
-  width: '550px',
-  height: '38px',
+  width: '580px',
+  height: '30px',
   border: '1px solid #f0f0f0',
   borderRadius: '10px',
 };
@@ -143,6 +152,16 @@ export const customStyles = {
   }),
 };
 
+export const ButtonContainer = styled.div`
+  background: transparent;
+  height: 60px;
+  width: 250px;
+  margin-top: 5px;
+  float: left;
+  margin-left: 310px;
+  margin-top: -30px;
+`;
+
 export const AddButton = styled.button`
   background-color: #1c71e9;
   width: 100px;
@@ -150,15 +169,24 @@ export const AddButton = styled.button`
   color: #ffffff;
   border: 1px solid #97caef;
   border-radius: 10px;
-  margin-left: -22px;
+  margin-left: 45px;
+  margin-top: 10px;
+  :hover {
+    background: #4cb543;
+  }
 `;
 
 export const CnlButton = styled.button`
-  background-color: gray;
+  background-color: transparent;
   width: 100px;
   height: 40px;
-  color: #ffffff;
+  color: gray;
   fontfamily: 'Roboto';
   border: 1px solid #97caef;
   border-radius: 10px;
+  margin-left: 5px;
+  :hover {
+    background: red;
+    color: #ffffff;
+  }
 `;
