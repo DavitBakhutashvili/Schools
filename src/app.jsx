@@ -1,6 +1,5 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Div from './app.styles';
 
 import Header from './components/header/header';
 
@@ -16,19 +15,19 @@ import PupilStateContextProvider from './context/states/pupilStates/pupilStatesC
 
 export default function App() {
   return (
-    <Div>
+    <>
+      <Header />
       <SchoolStateContextProvider>
         <PupilStateContextProvider>
-          <Header />
           <Routes>
             <Route path="schoolPage" element={<SchoolPage />} />
             <Route path="/schools/:id" element={<SchoolView />} />
           </Routes>
           <SchoolModal />
           <PupilModal />
-          {/* <EditPupil /> */}
+          <EditPupil />
         </PupilStateContextProvider>
       </SchoolStateContextProvider>
-    </Div>
+    </>
   );
 }

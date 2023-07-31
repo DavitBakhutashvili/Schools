@@ -1,59 +1,33 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-export const Div = styled.div`
-  background-color: #00283c;
-  // background-color: transparent;
+export const HeaderContainer = styled.div`
+  background-color: #c961db;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  justify-content: flex-start;
+  height: 72px;
+  grid-row: 1;
+  position: fixed;
   width: 100%;
-  height: 100px;
-`;
-
-export const LinkStyle = {
-  backgroundColor: 'transparent',
-  display: 'inline-block',
-  height: '80px',
-  width: '300px',
-  textAlign: 'center',
-  borderRadius: '50px',
-  boxSizing: 'border-box',
-  // lineHeight: '60px',
-  transition: 'all 0.3s ease-out',
-  marginTop: '10px',
-};
-
-export const SchoolButton = styled.button`
-  display: inline-block;
-  height: 75px;
-  width: 75px;
-  float: left;
-  margin-top: 2px;
-  margin-left: 5px;
-  overflow: hidden;
-  background: #fff;
+  top: 10px;
   border-radius: 50px;
-  cursor: pointer;
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease-out;
-  :hover {
-    width: 230px;
-    height: 75px;
-  }
-  :nth-child(1) span {
-    color: #19b3ff;
-  }
+  z-index: 102030;
 `;
 
-export const Img = styled.img`
-  font-size: 25px;
-  line-height: 60px;
-  transition: all 0.3s ease-out;
-`;
-
-export const Container = styled.div`
+export const HeaderButtonStyle = styled(Link)`
+  display: inline-block;
+  position: absolute;
   background: transparent;
-  margin-top: -55px;
-  margin-left: 135px;
+  height: 60px;
+  width: fit-content;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-out;
+  margin-left: 20px;
 `;
-
 export const Span = styled.span`
   text-align: center;
   align-items: center;
@@ -64,5 +38,6 @@ export const Span = styled.span`
   line-height: 60px;
   transition: all 0.3s ease-out;
   background-color: transparent;
-  color: #00283c;
+  color: #faf3fb;
+  cursor: pointer;
 `;
