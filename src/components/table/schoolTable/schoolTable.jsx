@@ -25,18 +25,26 @@ export default function SchoolTable() {
   return (
     <Div>
       <H1>Schools</H1>
+      <div
+        style={{
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '70px',
+          background: 'transparent',
+        }}
+      >
+        <Input
+          type="search"
+          placeholder="Search"
+          onChange={handleChange}
+          value={searchValues}
+        />
 
-      <Input
-        type="search"
-        placeholder="Search"
-        onChange={handleChange}
-        value={searchValues}
-      />
-
-      <Button onClick={openModal}>
-        <Img src={image} alt="addSchool" />
-        <Span>Create school</Span>
-      </Button>
+        <Button onClick={openModal}>
+          <Img src={image} alt="addSchool" />
+          <Span>Create school</Span>
+        </Button>
+      </div>
       <Form>
         <Table>
           <Thead>
@@ -65,7 +73,10 @@ export default function SchoolTable() {
                 <Th>{school.id}</Th>
                 <Th>
                   <Link
-                    style={{ textDecoration: 'none' }}
+                    style={{
+                      textDecoration: 'none',
+                      background: 'transparent',
+                    }}
                     key={school.id}
                     to={`/schools/${school.id}`}
                   >
