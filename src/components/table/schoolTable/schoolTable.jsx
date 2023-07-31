@@ -14,6 +14,7 @@ import {
   Img,
   Span,
   Tbody,
+  StyledContainer,
 } from './schoolTable.styles';
 import { SchoolStateContext } from '../../../context/states/schoolStates/schoolStatesContext';
 import image from '../../../assets/images/addSchool.png';
@@ -25,14 +26,7 @@ export default function SchoolTable() {
   return (
     <Div>
       <H1>Schools</H1>
-      <div
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-          height: '70px',
-          background: 'transparent',
-        }}
-      >
+      <StyledContainer>
         <Input
           type="search"
           placeholder="Search"
@@ -44,7 +38,7 @@ export default function SchoolTable() {
           <Img src={image} alt="addSchool" />
           <Span>Create school</Span>
         </Button>
-      </div>
+      </StyledContainer>
       <Form>
         <Table>
           <Thead>

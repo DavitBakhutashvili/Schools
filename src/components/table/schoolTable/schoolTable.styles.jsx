@@ -132,3 +132,10 @@ export const TH = styled.th`
 export const Tbody = styled.tbody`
   background: transparent;
 `;
+
+export const StyledContainer = styled.div`
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  background: transparent;
+`;
